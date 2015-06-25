@@ -8,6 +8,7 @@ import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
+import javax.mail.internet.InternetAddress;
 
 import org.apache.log4j.Logger;
 
@@ -35,7 +36,7 @@ public class CheckingMails {
 
 		      //create the folder object and open it
 		      Folder emailFolder = store.getFolder("Inbox");
-		      emailFolder.open(Folder.READ_ONLY);
+		      emailFolder.open(Folder.READ_WRITE);
 
 		      // retrieve the messages from the folder in an array and print it
 		      Message[] messages = emailFolder.getMessages();
@@ -51,6 +52,11 @@ public class CheckingMails {
 		         logger.info("Recipients: " + message.getAllRecipients()[0]);
 		         logger.info("Text: " + message.getContent().toString());
 		         logger.info("Content Type: " + message.getContentType());
+		         logger.info("Sent Date: "+message.getSentDate());
+		         logger.info("Received Date: "+message.getReceivedDate());
+		         logger.info("To: "+ InternetAddress.toString(message.getRecipients(Message.RecipientType.TO)));
+		         logger.info("CC: "+ InternetAddress.toString(message.getRecipients(Message.RecipientType.CC)));
+		         logger.info("BCC: "+ InternetAddress.toString(message.getRecipients(Message.RecipientType.BCC)));
 		      }
 
 		      //close the store and folder objects
@@ -70,8 +76,8 @@ public class CheckingMails {
 
 		      String host = "pop.gmail.com";// change accordingly
 		      String mailStoreType = "pop3";
-		      String username = "****@gmail.com";// change accordingly
-		      String password = "****";// change accordingly
+		      String username = "*****@gmail.com";// change accordingly
+		      String password = "*****";// change accordingly
 
 		      check(host, mailStoreType, username, password);
 
