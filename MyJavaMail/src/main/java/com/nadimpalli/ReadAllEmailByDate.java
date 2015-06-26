@@ -138,7 +138,7 @@ public class ReadAllEmailByDate {
 	            }*/
 	            
 	            for(Message message:messageReverse) {
-	            	if(count<=100)
+	            	if(count<=5)
 	            	{
 	            		try {
 		                    logger.info("DATE: "+message.getSentDate().toString());
@@ -185,7 +185,7 @@ public class ReadAllEmailByDate {
 	                // Replace  with the valid username of your Email ID.
 	                // Replace  with a valid password of your Email ID.
 
-	                store.connect("imap.gmail.com", "******@gmail.com", "******");
+	                store.connect("imap.gmail.com", "*******@gmail.com", "*******");
 
 	                // IMAP host for yahoo.
 	                //store.connect("imap.mail.yahoo.com", "", "");
